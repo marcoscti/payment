@@ -36,7 +36,7 @@ $app->post('/credit', function (Request $request, Response $response) {
     $res = $mp->setProcessPaymentCC(
         [
             'transaction_amount' => 1.00,
-            'token' => '1a59223449b4347fa77c81271b4f12ce',
+            'token' => '1d1edeeb9e560c1aaf57ad4eea4907a4',
             'description' => 'Doação HardTale',
             'installments' => 1,
             'payment_method_id' => 'visa',

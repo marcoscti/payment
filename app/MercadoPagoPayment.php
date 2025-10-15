@@ -319,6 +319,7 @@ class MercadoPagoPayment
                 'success' => true,
                 'payment_id' => $responseData['id'],
                 'status' => $responseData['status'],
+                'value'=>(float)($responseData['transaction_amount'] ?? 0),
                 'status_detail' => $responseData['status_detail'] ?? '',
                 'external_reference' => $responseData['external_reference'] ?? ''
             ]);
