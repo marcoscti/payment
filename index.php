@@ -1,4 +1,5 @@
 <?php
+
 use App\MercadoPagoPayment;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
@@ -9,11 +10,11 @@ require_once __DIR__ . '/app/MercadoPagoPayment.php';
 
 $app = AppFactory::create();
 
-$app->setBasePath('/'.getenv('BASE_PATH', true) ?: getenv('BASE_PATH'));
+$app->setBasePath('/' . getenv('BASE_PATH', true) ?: getenv('BASE_PATH'));
 
 $app->post('/tokenize', function (Request $request, Response $response) {
     $mp = new MercadoPagoPayment();
-    
+
     $res = $mp->setTokenizeCard([
         'card_number' => '4509953566233704',
         'expiration_month' => '11',
