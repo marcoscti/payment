@@ -61,7 +61,7 @@ class MercadoPagoPayment
                 ],
                 "external_reference" => 'Donate',
                 "statement_descriptor" => "HARDTALE",
-                "notification_url" => $_ENV['MERCADOPAGO_WEBHOOK_URL'] ?? 'https://hardtale.com.br/api/payment/webhook',
+                "notification_url" => getenv('BASE_URL', true) . '/payment/webhook',
                 "binary_mode" => false,
                 "capture" => true,
                 "additional_info" => [

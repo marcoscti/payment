@@ -5,12 +5,10 @@ use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
 
-require_once __DIR__ . '/vendor/autoload.php';
-require_once __DIR__ . '/app/MercadoPagoPayment.php';
+require_once __DIR__ . '/../vendor/autoload.php';
+require_once __DIR__ . '/../app/MercadoPagoPayment.php';
 
 $app = AppFactory::create();
-
-$app->setBasePath('/' . getenv('BASE_PATH', true) ?: getenv('BASE_PATH'));
 
 $app->post('/tokenize', function (Request $request, Response $response) {
     $mp = new MercadoPagoPayment();
@@ -71,7 +69,12 @@ $app->get('/pay/{id}', function (Request $request, Response $response, $args) {
     $response->getBody()->write($res);
     return $response->withHeader('Content-Type', 'application/json');
 });
+$app->get('/webhook', function (Request $request, Response $response, $args) {
+    $mp = new MercadoPagoPayment();
 
+    $response->getBody()->write("OK");
+    return $response->withHeader('Content-Type', 'application/json');
+});
 $app->get('/', function (Request $request, Response $response, $args) {
     $res = json_encode(['status' => 'API is running']);
     $response->getBody()->write($res);

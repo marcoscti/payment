@@ -1,3 +1,3 @@
 <?php
 putenv("ACCESS_TOKEN=APP_USR-");
-putenv("BASE_PATH=payment");
+putenv("BASE_PATH=public");
